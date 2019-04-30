@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="index.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+
+    <!-- v-bind (dans html) : utilisé pour lié class et style
+    affichera dans le vue un message : "vous avez affiché cette page le "date" et "heure""
+    lorsque vous approcher la souris sur la phrase concerné-->
+    <div id="app-2">
+        <span v-bind:title="message">
+          Passez votre souris sur moi pendant quelques secondes
+          pour voir mon titre lié dynamiquement !
+        </span>
+    </div>
+
+    <!-- v-if : utilisé pour faire rendu d'un bloc et évalué s'il est true
+//permuter la présence d'un élément-->
+    <div id="app-3">
+        <p v-if="seen">Maintenant vous me voyez</p>
+    </div>
+
+    <!-- v-for : utilisé pour faire le redu d'une liste d'éléments d'un tableau-->
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.text }}
+            </li>
+        </ol>
+    </div>
+
+    <!-- v-on : Nous pouvons utiliser l’instruction v-on pour écouter les évènements 
+    du DOM afin d’exécuter du JavaScript lorsque ces évènements surviennent.-->
+    <div id="app-5">
+        <p>{{ message }}</p>
+        <button v-on:click="reverseMessage">Message retourné</button>
+    </div>
+
+
+    <!-- v-model : utilisé pour créer une liaison de donées bidirectionnelle 
+    sur les champs de formulaire (input, select, ou texte area) -->
+    <!-- réecris la meme chose dans un <p> que dans l'input-->
+    <div id="app-7">
+        <input type="text" v-model="value_test" />
+        <h1 :class="{ red: color }">{{ value_test }}</h1>
+
+    </div>
+
+    <div id="app-8">
+        <input type="text" v-model="Title" />
+        <button v-on:click="show = Title">
+          Afficher
+        </button>
+        <h2 :class="{ red: color}" v-if="show">{{show}}</h2>
+        <input @click="color = !color" type="checkbox" id="scales" name="scales">
+    </div>
+
+    <div id="app-9">
+        <input @click="img = !img" type="checkbox" id="scales" name="scales">
+        <img src="roja.jpg" alt="imgroja" height="300px" width="420px" v-if="img">{{img}}</img>
+    </div>
+
+    <script src='index.js'></script>
+</body>
+
+</html>
